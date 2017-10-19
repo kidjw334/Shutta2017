@@ -48,7 +48,7 @@ public class Dealer {
     //endregion
 
     //region boolean _checkRoundType
-    private boolean _checkRoundType;
+    private boolean _checkRoundType = false;
 
     public boolean getCheckRoundType() {
         return _checkRoundType;
@@ -59,26 +59,35 @@ public class Dealer {
     }
     //endregion
 
+    //region int _bettingMoney
+    private int _bettingMoney = 100;
+
+    public int getBettingMoney() {
+        return _bettingMoney;
+    }
+
+    public void setBettingMoney(int bettingMoney) {
+        _bettingMoney = bettingMoney;
+    }
+    //endregion
+    
     void createCard(){
+        _card.clear();
         for (int i = 0; i < 20; i++) {
             _card.add(new Card(i%10+1, false));
             if(i == 10 || i==12 || i==17){
                 _card.get(i).setIsGwang(true);
             }
         }
-
-        for (int i = 0; i < 20; i++) {
-            System.out.println(_card.get(i).getNo());
-            System.out.println(_card.get(i).getIsGwang());
-        }
     }
 
-    int collectMoney(int bettingMoney, Player player1, Player player2) {
-        _prizeMoney = bettingMoney*2;
+    int collectMoney(Player player1, Player player2) {
+        if(getCheckRoundType() == true) _bettingMoney = _bettingMoney*2;
+        _prizeMoney = _bettingMoney*2;
         int player1Money = player1.getPlayerMonery();
         int player2Money = player2.getPlayerMonery();
-        player1.setPlayerMonery(player1Money-bettingMoney);
-        player2.setPlayerMonery(player2Money-bettingMoney);
+        player1.setPlayerMonery(player1Money-_bettingMoney);
+        player2.setPlayerMonery(player2Money-_bettingMoney);
         return _prizeMoney;
     }
 
@@ -89,5 +98,7 @@ public class Dealer {
         _card.remove(listNo);
         return selectCard;
     }
+
+
 }
 

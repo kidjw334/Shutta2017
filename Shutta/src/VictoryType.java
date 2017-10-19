@@ -1,3 +1,3 @@
 public interface VictoryType {
-    Player checkWinner(Player player1, Player player2);
+    void checkWinner(Player player1, Player player2, Dealer dealer);
 }
