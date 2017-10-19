@@ -1,5 +1,6 @@
 //3
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -14,16 +15,20 @@ public class Main {
 
         dealer.createCard();
 
-        dealer.collectMoney(player1.getPlayerMonery(), player2.getPlayerMonery());
+        int bettingMoney = 100;
+        dealer.collectMoney(bettingMoney, player1, player2);
+
 
         DrawCard(player1, dealer);
         DrawCard(player2, dealer);
 
 
+        if(dealer.getCheckRoundType()==false){
+            Factory.getInstance().setVictoryType(new VictoryGwang());
+        } else
+            Factory.getInstance().setVictoryType(new VictoryJang());
 
-
-
-        dealer.getCard();
+        Factory.getInstance().checkWinner(player1, player2);
     }
 
     private static void DrawCard(Player player, Dealer dealer) {

@@ -47,6 +47,18 @@ public class Dealer {
     }
     //endregion
 
+    //region boolean _checkRoundType
+    private boolean _checkRoundType;
+
+    public boolean getCheckRoundType() {
+        return _checkRoundType;
+    }
+
+    public void setCheckRoundType(boolean checkRoundType) {
+        _checkRoundType = checkRoundType;
+    }
+    //endregion
+
     void createCard(){
         for (int i = 0; i < 20; i++) {
             _card.add(new Card(i%10+1, false));
@@ -61,8 +73,12 @@ public class Dealer {
         }
     }
 
-    int collectMoney(int p1Money, int p2Money) {
-        _prizeMoney = p1Money + p2Money;
+    int collectMoney(int bettingMoney, Player player1, Player player2) {
+        _prizeMoney = bettingMoney*2;
+        int player1Money = player1.getPlayerMonery();
+        int player2Money = player2.getPlayerMonery();
+        player1.setPlayerMonery(player1Money-bettingMoney);
+        player2.setPlayerMonery(player2Money-bettingMoney);
         return _prizeMoney;
     }
 
