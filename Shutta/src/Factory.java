@@ -21,11 +21,11 @@ public class Factory {
     }
     //endregion
 
-    void checkWinner(Player player1, Player player2, Dealer dealer){
+    void checkWinner(Player player1, Player player2, Dealer dealer, Round round){
         if(_victoryType == null)
             return;
 
-        _victoryType.checkWinner(player1, player2, dealer);
+        _victoryType.checkWinner(player1, player2, dealer, round);
 
     }
 }

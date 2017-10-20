@@ -1,34 +1,52 @@
 public class Round {
-    private Round() {
+
+    //region boolean _checkRoundType
+    private boolean _RoundType;
+
+    public boolean getCheckRoundType() {
+        return _RoundType;
     }
 
-    private static Round _instance = new Round();
-
-    public static Round getInstance() {
-        return _instance;
+    public void setCheckRoundType(boolean checkRoundType) {
+        _RoundType = checkRoundType;
     }
 
-    //region int _roundCount
-    private int _roundCount;
+    public void roundInformation(Player player1, Player player2, Dealer dealer) {
+        System.out.println("\t\t\t\tPlay1\tPlay2");
+        System.out.println("-----------------------------------------");
+        System.out.printf("ID :\t\t\t");
+        System.out.printf(player1.getId());
+        System.out.printf("\t\t");
+        System.out.println(player2.getId());
 
-    public int getRoundCount() {
-        return _roundCount;
-    }
 
-    public void setRoundCount(int roundCount) {
-        _roundCount = roundCount;
-    }
-    //endregion
+        System.out.print("RestMoney :\t\t");
+        System.out.print(player1.getPlayerMonery());
+        System.out.printf("\t\t");
+        System.out.println(player2.getPlayerMonery());
 
-    //region int _roundMoney
-    private int _roundMoney;
+        System.out.print("RestMoney :\t\t");
 
-    public int getRoundResult() {
-        return _roundMoney;
-    }
+        System.out.print(player1.getPlayerMonery());
+        System.out.printf("\t\t");
+        System.out.println(player2.getPlayerMonery());
 
-    public void setRoundResult(int roundResult) {
-        _roundMoney = roundResult;
+        System.out.print("SeletedCard :\t");
+        System.out.print(player1.getFirstCard().getNo());
+        if (player1.getFirstCard().getIsGwang()) System.out.print("광 ");
+        else System.out.print("  ");
+        System.out.print(player1.getSecondCard().getNo());
+        if (player1.getSecondCard().getIsGwang()) System.out.print("광 ");
+        else System.out.print("  ");
+        System.out.print("\t");
+        System.out.print(player2.getFirstCard().getNo());
+        if (player2.getFirstCard().getIsGwang()) System.out.print("광 ");
+        else System.out.print("  ");
+        System.out.print(" ");
+        System.out.print(player2.getSecondCard().getNo());
+        if (player2.getSecondCard().getIsGwang()) System.out.print("광 ");
+        else System.out.print("  ");
+        System.out.println("");
     }
     //endregion
 }

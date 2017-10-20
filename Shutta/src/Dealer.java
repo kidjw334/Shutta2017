@@ -47,8 +47,20 @@ public class Dealer {
     }
     //endregion
 
+    //region int _bettingMoney
+    private int _bettingMoney = 100;
+
+    public int getBettingMoney() {
+        return _bettingMoney;
+    }
+
+    public void setBettingMoney(int bettingMoney) {
+        _bettingMoney = bettingMoney;
+    }
+    //endregion
+
     //region boolean _checkRoundType
-    private boolean _checkRoundType = false;
+    private boolean _checkRoundType;
 
     public boolean getCheckRoundType() {
         return _checkRoundType;
@@ -59,15 +71,15 @@ public class Dealer {
     }
     //endregion
 
-    //region int _bettingMoney
-    private int _bettingMoney = 100;
+    //region int _checkRoundCount
+    private int _checkRoundCount;
 
-    public int getBettingMoney() {
-        return _bettingMoney;
+    public int getCheckRoundCount() {
+        return _checkRoundCount;
     }
 
-    public void setBettingMoney(int bettingMoney) {
-        _bettingMoney = bettingMoney;
+    public void setCheckRoundCount(int checkRoundCount) {
+        _checkRoundCount = checkRoundCount;
     }
     //endregion
     
@@ -81,13 +93,14 @@ public class Dealer {
         }
     }
 
-    int collectMoney(Player player1, Player player2) {
-        if(getCheckRoundType() == true) _bettingMoney = _bettingMoney*2;
-        _prizeMoney = _bettingMoney*2;
+    int collectMoney(Player player1, Player player2, Round round) {
+
+        if(getCheckRoundType() == true) _bettingMoney = _bettingMoney * 2;
+        _prizeMoney = _prizeMoney + _bettingMoney * 2;
         int player1Money = player1.getPlayerMonery();
         int player2Money = player2.getPlayerMonery();
-        player1.setPlayerMonery(player1Money-_bettingMoney);
-        player2.setPlayerMonery(player2Money-_bettingMoney);
+        player1.setPlayerMonery(player1Money - _bettingMoney);
+        player2.setPlayerMonery(player2Money - _bettingMoney);
         return _prizeMoney;
     }
 
@@ -98,6 +111,8 @@ public class Dealer {
         _card.remove(listNo);
         return selectCard;
     }
+
+
 
 
 }
