@@ -1,5 +1,9 @@
 public class Round {
 
+    public Round(Dealer dealer) {
+        dealer.setCheckRoundCount(dealer.getCheckRoundCount()+1);
+    }
+
     //region boolean _checkRoundType
     private boolean _RoundType;
 
@@ -12,7 +16,8 @@ public class Round {
     }
 
     public void roundInformation(Player player1, Player player2, Dealer dealer) {
-        System.out.println("\t\t\t\tPlay1\tPlay2");
+        System.out.print("ROUND " + dealer.getCheckRoundCount());
+        System.out.println("\t\tPlayer1\tPlayer2");
         System.out.println("-----------------------------------------");
         System.out.printf("ID :\t\t\t");
         System.out.printf(player1.getId());
@@ -20,10 +25,7 @@ public class Round {
         System.out.println(player2.getId());
 
 
-        System.out.print("RestMoney :\t\t");
-        System.out.print(player1.getPlayerMonery());
-        System.out.printf("\t\t");
-        System.out.println(player2.getPlayerMonery());
+
 
         System.out.print("RestMoney :\t\t");
 

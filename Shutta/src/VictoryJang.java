@@ -17,29 +17,29 @@ public class VictoryJang implements VictoryType {
         play2Cards.add(play2FirstCard);
         play2Cards.add(play2SecondCard);
 
-        System.out.print("RankResult : \t");
+        System.out.print("RankResult :\t");
         int play1Rank = rankCalculator(play1Cards);
         int play2Rank = rankCalculator(play2Cards);
 
         System.out.println("");
-        System.out.print("Round Result : ");
+        System.out.print("Round Result :\t");
         if (play1Rank > play2Rank) {
             round.setCheckRoundType(false);
             player1.setVictoryCount(player1.getVictoryCount() + 1);
             player1.setPlayerMonery(player1.getPlayerMonery() + dealer.getPrizeMoney());
             dealer.setPrizeMoney(0);
             dealer.setBettingMoney(100);
-            System.out.println("Play1 Win");
+            System.out.println("** Play1 Win **");
         } else if (play1Rank < play2Rank) {
             round.setCheckRoundType(false);
             player2.setVictoryCount(player2.getVictoryCount() + 1);
             player2.setPlayerMonery(player2.getPlayerMonery() + dealer.getPrizeMoney());
             dealer.setPrizeMoney(0);
             dealer.setBettingMoney(100);
-            System.out.println("Play2 Win");
+            System.out.println("** Play2 Win **");
         } else {
             round.setCheckRoundType(false);
-            System.out.println("Tie");
+            System.out.println("** Tie **");
         }
 
         System.out.println("-----------------------------------------");

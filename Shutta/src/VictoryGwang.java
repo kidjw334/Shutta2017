@@ -17,12 +17,12 @@ public class VictoryGwang implements VictoryType {
         play2Cards.add(play2FirstCard);
         play2Cards.add(play2SecondCard);
 
-        System.out.print("RankResult : \t");
+        System.out.print("RankResult :\t");
         int play1Rank = rankCalculator(play1Cards);
         int play2Rank = rankCalculator(play2Cards);
 
         System.out.println("");
-        System.out.print("Round Result : ");
+        System.out.print("Round Result :\t");
         if(play1Rank > play2Rank){
             round.setCheckRoundType(false);
             player1.setVictoryCount(player1.getVictoryCount()+1);
