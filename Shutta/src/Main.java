@@ -10,7 +10,8 @@ public class Main {
 
 
         while (true) {
-            if (player1.getPlayerMonery() > 0 && player2.getPlayerMonery() > 0) {
+            if (player1.getPlayerMoney() > 0 && player2.getPlayerMoney() > 0) {
+
 
                 Round round = new Round(dealer);
 
@@ -19,23 +20,18 @@ public class Main {
                     Factory.getInstance().setVictoryType(new VictoryGwang());
                 } else Factory.getInstance().setVictoryType(new VictoryJang());
 
-                System.out.print("RestMoney :\t\t");
-                System.out.print(player1.getPlayerMonery());
-                System.out.printf("\t\t");
-                System.out.println(player2.getPlayerMonery());
+                System.out.print("CurrentMoney :\t");
+                player1.printCurrentMoney();
+                player2.printCurrentMoney();
+                System.out.println("");
 
                 dealer.collectMoney(player1, player2, round);
 
                 dealer.createCard();
 
-                DrawCard(player1, dealer);
-                DrawCard(player2, dealer);
-
+                drawCard(player1, player2, dealer);
 
                 round.roundInformation(player1, player2, dealer);
-
-
-
 
                 Factory.getInstance().checkWinner(player1, player2, dealer, round);
 
@@ -43,23 +39,16 @@ public class Main {
                 dealer.setCheckRoundType(round.getCheckRoundType());
 
             } else {
-                System.out.print("VictoryRate :\t");
-                long victoryRateOfPlayer1 = Math.round(((double)player1.getVictoryCount()/dealer.getCheckRoundCount())*100);
-                long victoryRateOfPlayer2 = Math.round(((double)player2.getVictoryCount()/dealer.getCheckRoundCount())*100);
-                System.out.print( victoryRateOfPlayer1 + "%");
-                System.out.print("\t\t");
-                System.out.println( victoryRateOfPlayer2 + "%");
-                System.out.print("VictoryPlayer :\t");
-                if (victoryRateOfPlayer1 > victoryRateOfPlayer2) System.out.println("Player1 = " + player1.getId());
-                else if(victoryRateOfPlayer1 == victoryRateOfPlayer2) System.out.println("Tie");
-                else System.out.println("Player2 = " + player2.getId());
+                dealer.shuttaResultInformation(player1, player2);
                 break;
             }
         }
     }
 
-    private static void DrawCard(Player player, Dealer dealer) {
-        player.setFirstCard(dealer.distributeCard());
-        player.setSecondCard(dealer.distributeCard());
+    private static void drawCard(Player player1, Player player2, Dealer dealer) {
+        player1.setFirstCard(dealer.distributeCard());
+        player1.setSecondCard(dealer.distributeCard());
+        player2.setFirstCard(dealer.distributeCard());
+        player2.setSecondCard(dealer.distributeCard());
     }
 }

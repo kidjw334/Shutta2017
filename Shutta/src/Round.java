@@ -17,21 +17,18 @@ public class Round {
 
     public void roundInformation(Player player1, Player player2, Dealer dealer) {
         System.out.print("ROUND " + dealer.getCheckRoundCount());
-        System.out.println("\t\tPlayer1\tPlayer2");
+        System.out.println("\t\t\tPlayer1\tPlayer2");
         System.out.println("-----------------------------------------");
         System.out.printf("ID :\t\t\t");
         System.out.printf(player1.getId());
         System.out.printf("\t\t");
         System.out.println(player2.getId());
 
-
-
-
         System.out.print("RestMoney :\t\t");
 
-        System.out.print(player1.getPlayerMonery());
+        System.out.print(player1.getPlayerMoney());
         System.out.printf("\t\t");
-        System.out.println(player2.getPlayerMonery());
+        System.out.println(player2.getPlayerMoney());
 
         System.out.print("SeletedCard :\t");
         System.out.print(player1.getFirstCard().getNo());

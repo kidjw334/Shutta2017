@@ -1,13 +1,13 @@
 public class Player {
-    //region int _playerMonery
-    private int _playerMonery;
+    //region int _playerMoney
+    private int _playerMoney;
 
-    public int getPlayerMonery() {
-        return _playerMonery;
+    public int getPlayerMoney() {
+        return _playerMoney;
     }
 
-    public void setPlayerMonery(int playerMonery) {
-        _playerMonery = playerMonery;
+    public void setPlayerMoney(int playerMoney) {
+        _playerMoney = playerMoney;
     }
     //endregion
 
@@ -60,8 +60,14 @@ public class Player {
     //endregion
 
 
-    public Player(int playerMonery, String id) {
-        _playerMonery = playerMonery;
+    public Player(int playerMoney, String id) {
+        _playerMoney = playerMoney;
         _id = id;
+    }
+
+    public void printCurrentMoney() {
+        System.out.print(getPlayerMoney());
+        System.out.printf("\t\t");
+
     }
 }

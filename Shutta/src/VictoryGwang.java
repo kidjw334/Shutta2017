@@ -26,14 +26,14 @@ public class VictoryGwang implements VictoryType {
         if(play1Rank > play2Rank){
             round.setCheckRoundType(false);
             player1.setVictoryCount(player1.getVictoryCount()+1);
-            player1.setPlayerMonery(player1.getPlayerMonery()+dealer.getPrizeMoney());
+            player1.setPlayerMoney(player1.getPlayerMoney()+dealer.getPrizeMoney());
             dealer.setPrizeMoney(0);
             dealer.setBettingMoney(100);
             System.out.println("Play1 Win");
         } else if (play1Rank < play2Rank){
             round.setCheckRoundType(false);
             player2.setVictoryCount(player2.getVictoryCount()+1);
-            player2.setPlayerMonery(player2.getPlayerMonery()+dealer.getPrizeMoney());
+            player2.setPlayerMoney(player2.getPlayerMoney()+dealer.getPrizeMoney());
             dealer.setPrizeMoney(0);
             dealer.setBettingMoney(100);
             System.out.println("Play2 Win");

@@ -97,10 +97,10 @@ public class Dealer {
 
         if(getCheckRoundType() == true) _bettingMoney = _bettingMoney * 2;
         _prizeMoney = _prizeMoney + _bettingMoney * 2;
-        int player1Money = player1.getPlayerMonery();
-        int player2Money = player2.getPlayerMonery();
-        player1.setPlayerMonery(player1Money - _bettingMoney);
-        player2.setPlayerMonery(player2Money - _bettingMoney);
+        int player1Money = player1.getPlayerMoney();
+        int player2Money = player2.getPlayerMoney();
+        player1.setPlayerMoney(player1Money - _bettingMoney);
+        player2.setPlayerMoney(player2Money - _bettingMoney);
         return _prizeMoney;
     }
 
@@ -113,7 +113,20 @@ public class Dealer {
     }
 
 
-
-
+    public void shuttaResultInformation(Player player1, Player player2) {
+        System.out.print("ResultMoney :\t");
+        System.out.print(player1.getPlayerMoney()+"\t");
+        System.out.println(player2.getPlayerMoney());
+        System.out.print("VictoryRate :\t");
+        long victoryRateOfPlayer1 = Math.round(((double)player1.getVictoryCount()/getCheckRoundCount())*100);
+        long victoryRateOfPlayer2 = Math.round(((double)player2.getVictoryCount()/getCheckRoundCount())*100);
+        System.out.print( victoryRateOfPlayer1 + "%");
+        System.out.print("\t\t");
+        System.out.println( victoryRateOfPlayer2 + "%");
+        System.out.print("VictoryPlayer :\t");
+        if (victoryRateOfPlayer1 > victoryRateOfPlayer2) System.out.println("Player1 = " + player1.getId());
+        else if(victoryRateOfPlayer1 == victoryRateOfPlayer2) System.out.println("Tie");
+        else System.out.println("Player2 = " + player2.getId());
+    }
 }
 
